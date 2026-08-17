@@ -57,9 +57,9 @@ class TodoPage:
     @staticmethod
     def _task_label(task: str) -> tuple[str, str]:
         text = _xpath_literal(task)
-        return By.XPATH, f"//li/span[normalize-space()={text}]"
+        return By.XPATH, f"//li//span[normalize-space()={text}]"
 
     @staticmethod
     def _task_checkbox(task: str) -> tuple[str, str]:
         text = _xpath_literal(task)
-        return By.XPATH, f"//li[span[normalize-space()={text}]]//input[@type='checkbox']"
+        return By.XPATH, f"//li[.//span[normalize-space()={text}]]//input[@type='checkbox']"
