@@ -38,7 +38,15 @@ def test_local_mobile_session_uses_chrome_emulation(monkeypatch: pytest.MonkeyPa
     driver = DriverFactory(settings).create()
 
     assert driver is fake_driver
-    assert captured["options"].experimental_options["mobileEmulation"] == {"deviceName": "Pixel 5"}
+    mobile = captured["options"].experimental_options["mobileEmulation"]
+    assert mobile["deviceMetrics"] == {
+        "width": 393,
+        "height": 851,
+        "pixelRatio": 3.0,
+        "mobile": True,
+        "touch": True,
+    }
+    assert mobile["clientHints"] == {"platform": "Android", "mobile": True}
     assert fake_driver.window_size == (1440, 1000)
     assert fake_driver.page_timeout == 45
 

@@ -13,6 +13,16 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from pipeline_suite.config import RunSettings
 
 DEFAULT_LT_GRID = "https://hub.lambdatest.com/wd/hub"
+MOBILE_EMULATION = {
+    "deviceMetrics": {
+        "width": 393,
+        "height": 851,
+        "pixelRatio": 3.0,
+        "mobile": True,
+        "touch": True,
+    },
+    "clientHints": {"platform": "Android", "mobile": True},
+}
 
 
 class ConfigurationError(RuntimeError):
@@ -51,7 +61,7 @@ class DriverFactory:
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--no-sandbox")
             if self.settings.mobile:
-                options.add_experimental_option("mobileEmulation", {"deviceName": "Pixel 5"})
+                options.add_experimental_option("mobileEmulation", MOBILE_EMULATION)
         else:
             options = FirefoxOptions()
             if self.settings.headless:
