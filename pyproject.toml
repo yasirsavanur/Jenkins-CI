@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jenkins-selenium-pipeline"
+version = "2.0.0"
+description = "A parameterised Jenkins delivery pipeline for Selenium and pytest"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Yasir Savanur"}]
+dependencies = [
+    "selenium>=4.20,<5",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8,<10",
+    "pytest-html>=4,<5",
+    "pytest-xdist>=3.6,<4",
+    "ruff>=0.5,<1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+markers = [
+    "mobile: responsive Chrome journey",
+    "regression: desktop behavioural coverage",
+    "smoke: build acceptance coverage",
+    "unit: isolated framework and pipeline checks",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pipeline Tasks</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell brand"><span class="brand-mark">J</span><span>Pipeline Tasks</span><span class="status"><i></i> Agent ready</span></div>
+  </header>
+  <main class="shell layout">
+    <section class="intro">
+      <p class="eyebrow">Jenkins acceptance target</p>
+      <h1>Ship the work.<br><span>Keep the signal.</span></h1>
+      <p>A deterministic task flow for browser checks running locally, in parallel, or on a cloud Selenium Grid.</p>
+      <dl class="metrics">
+        <div><dt>3</dt><dd>pipeline gates</dd></div>
+        <div><dt>2</dt><dd>execution targets</dd></div>
+        <div><dt>1</dt><dd>source of truth</dd></div>
+      </dl>
+    </section>
+    <section class="board" aria-labelledby="board-heading">
+      <div class="board-heading"><div><p class="eyebrow">Build #local</p><h2 id="board-heading">Release checklist</h2></div><span class="run-badge">Running</span></div>
+      <ul id="todo-list" aria-live="polite">
+        <li><input id="seed-1" name="li1" type="checkbox"><label for="seed-1"><span class="done-false">Checkout source</span></label></li>
+        <li><input id="seed-2" name="li2" type="checkbox"><label for="seed-2"><span class="done-false">Create test environment</span></label></li>
+        <li><input id="seed-3" name="li3" type="checkbox"><label for="seed-3"><span class="done-false">Run static analysis</span></label></li>
+      </ul>
+      <form id="todo-form">
+        <label for="sampletodotext">Add pipeline task</label>
+        <div class="add-row">
+          <input id="sampletodotext" autocomplete="off" placeholder="e.g. Publish test report" required>
+          <button id="addbutton" type="submit">Add task</button>
+        </div>
+      </form>
+      <footer><span id="completed-count">0 completed</span><span>pytest + Selenium</span></footer>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
